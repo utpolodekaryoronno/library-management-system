@@ -19,6 +19,10 @@
 
         <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
 
+
+		<!-- Datatables CSS -->
+		<link rel="stylesheet" href="{{ asset('assets/plugins/datatables/datatables.min.css') }}">
+
         <!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     </head>
@@ -50,6 +54,11 @@
 		<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
 		<script src="{{ asset('assets/js/chart.morris.js') }}"></script>
 
+        <!-- Datatables JS -->
+		<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+		<script src="{{ asset('assets/plugins/datatables/datatables.min.js') }}"></script>
+        <!-- Sweet Alert JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<!-- Custom JS -->
 		<script  src="{{ asset('assets/js/script.js') }}"></script>
     </body>

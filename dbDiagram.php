@@ -44,6 +44,6 @@ Table reservations{
   updated_at datetime
 }
 
-Ref borrowings: students.id > borrowings.student_id
-Ref borrowings: books.id > borrowings.book_id
-Ref reservations: borrowings.id > reservations.borrowing_id
+Ref borrowings: borrowings.student_id > students.id
+Ref borrowings: borrowings.book_id > books.id
+Ref reservations: reservations.borrowing_id > borrowings.id
