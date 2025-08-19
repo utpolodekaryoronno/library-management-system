@@ -6,16 +6,32 @@
                 <li class="menu-title">
                     <span>Main</span>
                 </li>
-                <li class="active">
+                <li class="{{ Request::is('/') ? 'active' : '' }}">
                     <a href="{{ url('/') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
-                <li class="submenu">
-                    <a href="javascript:void(0)"><i class="fe fe-document"></i> <span> Books </span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('books.index') }}"> All Books </a></li>
-                        <li><a href="{{ route('books.create') }}"> Add New Book </a></li>
+                <li class="submenu {{ Route::is('books.index') || Route::is('books.create') ? 'active' : '' }}">
+                    <a href="javascript:void(0)">
+                        <i class="fe fe-document"></i>
+                        <span> Books</span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul style="display: {{ Route::is('books.index') || Route::is('books.create') ? 'block' : 'none' }};">
+                        <li>
+                            <a href="{{ route('books.index') }}"
+                            class="{{ Route::is('books.index') ? 'link-active' : '' }}">
+                            All Books
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('books.create') }}"
+                            class="{{ Route::is('books.create') ? 'link-active' : '' }}">
+                            Add New Book
+                            </a>
+                        </li>
                     </ul>
                 </li>
+
+
                 <li class="submenu">
                     <a href="javascript:void(0)"><i class="fe fe-document"></i> <span> Students </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -24,7 +40,7 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="{{ Route::is('borrows.index') ? 'active' : '' }}">
                     <a href="{{ route('borrows.index') }}"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
                 </li>
                 <li>
