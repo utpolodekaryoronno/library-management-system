@@ -3772,6 +3772,14 @@ table.table-inbox tbody tr.checked {
 .cover:hover.cover::after{
     visibility: visible;
 }
+
+
+.student-card-img{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
 /*-----------------
 	25. Responsive
 -----------------------*/

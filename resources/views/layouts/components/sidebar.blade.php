@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a href="components.html"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
+                    <a href="{{ route('borrows.index') }}"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
                 </li>
                 <li>
                     <a href="components.html"><i class="fe fe-vector"></i> <span>Reservation</span></a>
