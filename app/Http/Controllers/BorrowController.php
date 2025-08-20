@@ -29,7 +29,16 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request->all();
+
+        DB::table('borrows')->insert([
+            'student_id'    => $request-> student_id,
+            'book_id'       => $request-> book_id,
+            'return_date'   => $request-> return_date,
+            'created_at'    => now(),
+        ]);
+
+        return back()->with('success', 'Book Assigned Successfully!');
     }
 
     /**
@@ -88,6 +97,18 @@ class BorrowController extends Controller
         // return
         return view('borrow.search-borrow-student', compact('students'));
     }
+
+     /**
+     * Book Assign to Student.
+     */
+
+     public function bookAssign($id){
+        $student = DB::table('students')->where('id', $id)->first();
+        $books = DB::table('books')->get();
+
+        return view('borrow.book-assign', compact('student', 'books'));
+     }
+
 
 
 }

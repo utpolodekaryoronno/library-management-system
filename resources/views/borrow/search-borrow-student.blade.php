@@ -60,7 +60,7 @@
                                 <h5 class="card-title mb-0">{{$student->name}}</h5>
                             </div>
                             <div class="card-body">
-                                <a class="btn btn-primary" href="#">Assign Book</a>
+                                <a class="btn btn-primary" href="{{ route('book.assign', $student->id) }}">Assign Book</a>
                             </div>
                         </div>
                     </div>

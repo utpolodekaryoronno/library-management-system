@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col">
                         <h3 class="page-title">Add New Book</h3>
-                        <a href="{{ url('/') }}">Back</a>
+                        <a href="{{ route('books.index') }}">Back</a>
                     </div>
                 </div>
             </div>

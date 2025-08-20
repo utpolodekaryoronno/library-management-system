@@ -14,3 +14,4 @@ Route::resource('books', BookController::class);
 Route::resource('borrows', BorrowController::class);
 Route::get('borrows-search', [BorrowController::class, 'search'])->name('borrow.search');
 Route::post('borrows-student-search', [BorrowController::class, 'searchStudent'])->name('borrow.student.search');
+Route::get('book-assign/{id}', [BorrowController::class, 'bookAssign'])->name('book.assign');

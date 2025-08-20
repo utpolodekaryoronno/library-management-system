@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('borrows', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->constrained('students')->onDelete('cascade');
+            $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
+            $table->string('issue_date')->default(now());
+            $table->string('return_date');
+            $table->string('status')->default('pending'); // pending, return, overdue
             $table->timestamps();
         });
     }
