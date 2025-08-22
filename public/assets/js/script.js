@@ -255,7 +255,7 @@ function previewFile(input) {
 
 
 
-// Sweet js ========================================================================================
+// Sweet js for delete ========================================================================================
 document.addEventListener('DOMContentLoaded', function () {
     const deleteButtons = document.querySelectorAll('.delete-btn');
     deleteButtons.forEach(button => {
@@ -280,5 +280,38 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+
+
+
+// Sweet js for return ========================================================================================
+
+document.addEventListener('DOMContentLoaded', function () {
+    const returnButtons = document.querySelectorAll('.return-btn');
+
+    returnButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault(); // normal link prevent করলাম
+
+            let url = this.getAttribute('href');
+
+            Swal.fire({
+                title: 'Return this book?',
+                text: "Are you sure you want to mark this book as returned?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, return it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url; // confirm করলে redirect
+                }
+            });
+        });
+    });
+});
+
 
 

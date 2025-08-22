@@ -2769,7 +2769,7 @@ table.table-inbox tbody tr.checked {
 	min-height: unset;
 }
 .error-box {
-    margin: 0 auto;
+    margin: 150px auto;
     max-width: 480px;
     padding: 1.875rem 0;
     text-align: center;

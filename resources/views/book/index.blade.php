@@ -33,6 +33,7 @@
                                             <th>Book Title</th>
                                             <th>Author</th>
                                             <th>ISBN</th>
+                                            <th>Total Copies</th>
                                             <th>Available Copy</th>
                                             <th>Created At</th>
                                             <th>Action</th>
@@ -48,6 +49,7 @@
                                             <td>{{ $book->title }}</td>
                                             <td>{{ $book->author }}</td>
                                             <td>{{ $book->isbn }}</td>
+                                            <td class="text-center">{{ $book->copy }}</td>
                                             <td class="text-center">{{ $book->available_copy }}</td>
                                             <td>{{ \Carbon\Carbon::parse($book->created_at)->diffForHumans() }}</td>
                                             <td>

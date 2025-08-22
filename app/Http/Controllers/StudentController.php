@@ -92,7 +92,7 @@ class StudentController extends Controller
             'name'          => 'required|max:30|min:3',
             'phone' => 'required|starts_with:013,014,015,016,017,018,019|unique:students,phone,' . $id . ',id',
             'address'       => 'max:200|min:3',
-            'photo'         => 'required|mimes:jpg,png,jpeg|max:2024',
+            'photo'         => 'mimes:jpg,png,jpeg|max:2024',
         ]);
 
         $student = DB::table('students')->where('id', $id)->first();

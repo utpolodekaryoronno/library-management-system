@@ -8,7 +8,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title mb-2">All Borrowing</h3>
+                        <h3 class="page-title mb-2">All Overdues</h3>
                         <a class="btn btn-primary" href="{{ route('borrow.search') }}"> Add New Borrow</a>
                     </div>
                 </div>
@@ -20,13 +20,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('borrows.index') }}">All Borrows</a>
-                            <a class="btn btn-success" href="{{ route('overdue.borrows') }}">Go Overdue</a>
+                            <a href="{{ route('overdue.borrows') }}">Overdue</a>
+                            <a class="btn btn-success" href="{{ route('borrows.index') }}">Go All Borrows</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /Page Header -->
+
 
             <div class="row">
                 <div class="col-sm-12">
@@ -47,15 +48,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($borrows as $borrow)
+                                        @foreach ($overdueBorrows as $overdueBorrow)
                                             <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                                <td><img height="50" class="rounded" src="{{ 'media/student/' . $borrow->student_photo }}" alt=""> &nbsp; {{ $borrow->student_name}}</td>
-                                                <td><img height="80" width="70" class="rounded" src="{{ 'media/book/' . $borrow->book_cover }}" alt=""> &nbsp; {{$borrow->book_title}} </td>
-                                                <td>{{ date('F d, Y', strtotime($borrow->issue_date)) }}</td>
+                                                <td><img height="50" class="rounded" src="{{ 'media/student/' . $overdueBorrow->student_photo }}" alt=""> &nbsp; {{ $overdueBorrow->student_name}}</td>
+                                                <td><img height="80" width="70" class="rounded" src="{{ 'media/book/' . $overdueBorrow->book_cover }}" alt=""> &nbsp; {{$overdueBorrow->book_title}} </td>
+                                                <td>{{ date('F d, Y', strtotime($overdueBorrow->issue_date)) }}</td>
                                                 {{-- For Return Date --}}
                                                 @php
-                                                    $daysLeft = ceil(\Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($borrow->return_date), false));
+                                                    $daysLeft = ceil(\Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($overdueBorrow->return_date), false));
                                                 @endphp
 
                                                 <td>
@@ -67,18 +68,12 @@
                                                         <span class="text-danger">{{ abs($daysLeft) }} Days Delayed</span>
                                                     @endif
                                                 </td>
-                                                <td>{{\Carbon\Carbon::parse($borrow->created_at)->diffForHumans()}}</td>
+                                                <td>{{\Carbon\Carbon::parse($overdueBorrow->created_at)->diffForHumans()}}</td>
                                                 <td class="text-center">
-                                                    @if ($borrow->status == "returned")
-                                                        <span class="btn btn-rounded btn-success">Returned</span>
-                                                    @elseif ($daysLeft <= 0)
-                                                        <span class="btn btn-rounded btn-danger">Overdue</span>
-                                                    @else
-                                                        <span class="btn btn-rounded btn-warning">Pending</span>
-                                                    @endif
+                                                    <span class="btn btn-rounded btn-danger">Overdue</span>
                                                 </td>
 
-                                                <td class="text-right"><a href="{{ route('book.returned', $borrow->id) }}" class="btn btn-primary return-btn">Make Return</a></td>
+                                                <td class="text-right"><a href="{{ route('book.returned', $overdueBorrow->id) }}" class="btn btn-primary return-btn">Make Return</a></td>
                                             </tr>
                                         @endforeach
 

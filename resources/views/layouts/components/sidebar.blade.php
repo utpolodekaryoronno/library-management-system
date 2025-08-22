@@ -33,7 +33,7 @@
 
 
                 <li class="submenu">
-                    <a href="javascript:void(0)"><i class="fe fe-document"></i> <span> Students </span> <span class="menu-arrow"></span></a>
+                    <a href="javascript:void(0)"><i class="fe fe-user"></i> <span> Students </span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('students.index') }}"> All Students </a></li>
                         <li><a href="{{ route('students.create') }}"> Add New Student </a></li>

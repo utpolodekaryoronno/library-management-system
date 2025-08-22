@@ -47,9 +47,11 @@
                                     <label for="book">Select Book</label>
                                     <select class="form-control" id='book' name="book_id">
                                         @foreach($books as $book)
-                                            <option value="{{ $book->id }}">
-                                                {{ $book->title }} ({{ $book->author }})
-                                            </option>
+                                             @if ($book->available_copy > 0)
+                                                <option value="{{ $book->id }}">
+                                                    {{ $book->title }} ({{ $book->author }})
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
