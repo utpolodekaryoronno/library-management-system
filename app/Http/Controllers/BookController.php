@@ -68,8 +68,16 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book =DB::table('books')->where('id', $id)->first();
-        return view('book.show', compact('book'));
+        $book = DB::table('books')->where('id', $id)->first();
+
+        $thisBookBorrowedList = DB::table('borrows')
+            ->join('students', 'borrows.student_id', '=', 'students.id')
+            ->where('borrows.book_id', $id)
+            ->where('borrows.status', 'pending')
+            ->select('borrows.*', 'students.name as student_name', 'students.photo as student_photo')
+            ->get();
+
+        return view('book.show', compact('book', 'thisBookBorrowedList'));
     }
 
     /**

@@ -36,19 +36,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="profile-menu">
-                        <ul class="nav nav-tabs nav-tabs-solid">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#per_details_tab">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="tab-content profile-tab-cont">
 
+                    <div class="tab-content">
                         <!-- Personal Details Tab -->
-                        <div class="tab-pane fade show active" id="per_details_tab">
-
-                            <!-- Personal Details -->
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="card">
@@ -58,26 +48,34 @@
                                                 <a class="edit-link" href="{{ route('students.edit', $student->id) }}"><i class="fa fa-edit mr-1"></i>Edit</a>
                                             </h5>
                                             <div class="row">
-                                                <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Name :</p>
+                                                <p class="col-sm-2 text-muted mb-0 mb-sm-3">Name :</p>
                                                 <p class="col-sm-10">{{ $student->name }}</p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Email :</p>
+                                                <p class="col-sm-2 text-muted mb-0 mb-sm-3">Email :</p>
                                                 <p class="col-sm-10">{{ $student->email }}</p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Phone :</p>
+                                                <p class="col-sm-2 text-muted mb-0 mb-sm-3">Phone :</p>
                                                 <p class="col-sm-10">{{ $student->phone }}</p>
                                             </div>
                                              <div class="row">
-                                                <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Phone :</p>
+                                                <p class="col-sm-2 text-muted mb-0 mb-sm-3">Phone :</p>
                                                 <p class="col-sm-10">{{ $student->student_id }}</p>
                                             </div>
                                             <div class="row">
-                                                <p class="col-sm-2 text-muted text-sm-right mb-0 mb-sm-3">Address :</p>
+                                                <p class="col-sm-2 text-muted mb-0 mb-sm-3">Address :</p>
                                                 <p class="col-sm-10">{{ $student->address }}, <br> Bangladesh</p>
                                             </div>
-
+                                            <div class="row">
+                                                    <p class="col-sm-2 mb-0 mb-sm-3 p-3"><strong>Borrowed Book</strong> :</p>
+                                                    <h6 class="col-sm-10">
+                                                        @foreach ($thisStudentBorrowedList as $borrow)
+                                                            <p ><img class="rounded" height="70" width="60" src="{{ asset('media/book/' . $borrow->book_cover) }}" alt=""> {{ $borrow->book_title }} <span class="text-muted"> ({{ \Carbon\Carbon::parse($borrow->created_at)->format('d M Y') }} - {{ \Carbon\Carbon::parse($borrow->return_date)->format('d M Y') }})</span></p>
+                                                        @endforeach
+                                                    </h6>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -85,12 +83,8 @@
 
 
                             </div>
-                            <!-- /Personal Details -->
-
                         </div>
                         <!-- /Personal Details Tab -->
-
-
                     </div>
                 </div>
             </div>

@@ -25,6 +25,31 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-3">Borrowing List</h5>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Borrowed At</th>
+                                        <th>Return Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($thisBookBorrowedList as $borrow)
+                                        <tr>
+                                            <td><img height="40" width="40" class="rounded-circle" src="{{ asset('media/student/' . $borrow->student_photo) }}" alt="student-photo"> &nbsp; {{ $borrow->student_name }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($borrow->created_at)->format('d M Y') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($borrow->return_date)->format('d M Y') }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

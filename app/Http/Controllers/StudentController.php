@@ -71,7 +71,15 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = DB::table('students')->where('id', $id)->first();
-        return view('student.show', compact('student'));
+
+        $thisStudentBorrowedList = DB::table('borrows')
+            ->join('books', 'borrows.book_id', '=', 'books.id')
+            ->where('borrows.student_id', $id)
+            ->where('status', 'pending')
+            ->select('borrows.*', 'books.title as book_title', 'books.cover as book_cover')
+            ->get();
+
+        return view('student.show', compact('student', 'thisStudentBorrowedList'));
     }
 
     /**
