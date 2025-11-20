@@ -37,7 +37,7 @@ class BookController extends Controller
             'title'     => 'required',
             'author'    => 'required',
             'cover'     => 'required | mimes:jpeg,png,jpg | max:2024',
-            'isbn'      => 'required',
+            'isbn' => 'required|unique:books,isbn',
             'copy'      => 'required | integer',
         ]);
 
