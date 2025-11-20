@@ -89,7 +89,7 @@
                                     <i class="fe fe-money"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <h3>485</h3>
+                                    <h3>0</h3>
                                 </div>
                             </div>
                             <div class="dash-widget-info">
