@@ -44,7 +44,7 @@
                     <a href="{{ route('borrows.index') }}"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
                 </li>
                 <li>
-                    <a href="components.html"><i class="fe fe-vector"></i> <span>Reservation</span></a>
+                    <a href="components.html"><i class="fe fe-document"></i> <span>Reservation</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
