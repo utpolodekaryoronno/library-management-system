@@ -32,19 +32,19 @@
                 </li>
 
 
-                <li class="submenu">
+                <li class="submenu {{ Route::is('students.index') || Route::is('students.create') ? 'active' : '' }}">
                     <a href="javascript:void(0)"><i class="fe fe-user"></i> <span> Students </span> <span class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="{{ route('students.index') }}"> All Students </a></li>
-                        <li><a href="{{ route('students.create') }}"> Add New Student </a></li>
+                    <ul style="display: {{ Route::is('students.index') || Route::is('students.create') ? 'block' : 'none' }};">
+                        <li><a href="{{ route('students.index') }}" class="{{ Route::is('students.index') ? 'link-active' : '' }}"> All Students </a></li>
+                        <li><a href="{{ route('students.create') }}" class="{{ Route::is('students.create') ? 'link-active' : '' }}"> Add New Student </a></li>
                     </ul>
                 </li>
 
                 <li class="{{ Route::is('borrows.index') ? 'active' : '' }}">
                     <a href="{{ route('borrows.index') }}"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
                 </li>
-                <li>
-                    <a href="components.html"><i class="fe fe-document"></i> <span>Reservation</span></a>
+                <li class="{{ Route::is('reservations.index') ? 'active' : '' }}">
+                    <a href="{{ route('reservations.index') }}"> <i class="fe fe-document"></i> <span>Reservation</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
