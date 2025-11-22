@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ReservationController;
 
 Route::get('/', function () {
     $totalStudents = DB::table('students')->count();
@@ -23,3 +24,4 @@ Route::post('borrows-student-search', [BorrowController::class, 'searchStudent']
 Route::get('book-assign/{id}', [BorrowController::class, 'bookAssign'])->name('book.assign');
 Route::get('book-returned/{id}', [BorrowController::class, 'bookReturned'])->name('book.returned');
 Route::get('overdue-borrows', [BorrowController::class, 'overdueBorrow'])->name('overdue.borrows');
+Route::resource('reservations', ReservationController::class);
