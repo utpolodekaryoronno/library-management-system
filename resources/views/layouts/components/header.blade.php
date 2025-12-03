@@ -90,7 +90,7 @@
 									<img src="{{ asset('assets/img/profiles/avatar-01.jpg') }}" alt="User Image" class="avatar-img rounded-circle">
 								</div>
 								<div class="user-text">
-									<h6>Utpol Adhikary</h6>
+									<h6>{{Auth::guard('librarian')->user()->name}}</h6>
 									<p class="text-muted mb-0">Librarian</p>
 								</div>
 							</div>
