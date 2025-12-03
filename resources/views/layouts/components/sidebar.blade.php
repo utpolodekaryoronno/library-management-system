@@ -6,8 +6,8 @@
                 <li class="menu-title">
                     <span>Main</span>
                 </li>
-                <li class="{{ Request::is('/') ? 'active' : '' }}">
-                    <a href="{{ url('/') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+                <li class="{{ Request::is('dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li class="submenu {{ Route::is('books.index') || Route::is('books.create') ? 'active' : '' }}">
                     <a href="javascript:void(0)">

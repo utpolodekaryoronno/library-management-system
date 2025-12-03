@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
+	@include('layouts.components.header')
+	@include('layouts.components.sidebar')
+
     <!-- Page Wrapper -->
     <div class="page-wrapper">
         <div class="content container-fluid">

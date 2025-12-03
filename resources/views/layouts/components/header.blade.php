@@ -3,10 +3,10 @@
 
 				<!-- Logo -->
                 <div class="header-left">
-                    <a href="{{ url('/') }}" class="logo">
+                    <a href="{{ route('dashboard') }}" class="logo">
 						<img src="{{ asset('assets/img/logo.png') }}" alt="Logo">
 					</a>
-					<a href="{{ url('/') }}" class="logo logo-small">
+					<a href="{{ route('dashboard') }}" class="logo logo-small">
 						<img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
 					</a>
                 </div>
@@ -96,7 +96,10 @@
 							</div>
 							<a class="dropdown-item" href="profile.html">My Profile</a>
 							<a class="dropdown-item" href="settings.html">Settings</a>
-							<a class="dropdown-item" href="login.html">Logout</a>
+                            <form action="{{route('logout.librarian')}}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
 						</div>
 					</li>
 					<!-- /User Menu -->

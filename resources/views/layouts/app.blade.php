@@ -31,9 +31,9 @@
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 
-			@include('layouts.components.header')
 
-			@include('layouts.components.sidebar')
+
+
 
 			@yield('content')
 
