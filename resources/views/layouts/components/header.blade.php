@@ -91,7 +91,7 @@
 								</div>
 								<div class="user-text">
 									<h6>Utpol Adhikary</h6>
-									<p class="text-muted mb-0">Administrator</p>
+									<p class="text-muted mb-0">Librarian</p>
 								</div>
 							</div>
 							<a class="dropdown-item" href="profile.html">My Profile</a>
