@@ -22,7 +22,11 @@
             <div class="col-md-7 text-white text-center text-md-start">
                 <div class="mb-5">
                     <span class="badge bg-white text-primary px-4 py-3 rounded-pill fw-bold shadow-sm">
+                        @if (Auth::guard('librarian')->user() )
+                            <a href="{{route('dashboard')}}"> Go Dashbord</a>
+                        @else
                         <i class="bi bi-stars me-2"></i> Modern Library Management
+                        @endif
                     </span>
                 </div>
 
@@ -72,10 +76,16 @@
 
                 <!-- CTA Buttons -->
                 <div class="d-grid d-sm-flex gap-4 justify-content-center justify-content-md-start">
-                    <a href="{{ route('librarian.login') }}" class="btn btn-primary-custom btn-md">
-                        <i class="bi bi-box-arrow-in-right me-2"></i>
-                        Librarian Login
-                    </a>
+
+                     @if (Auth::guard('librarian')->user() )
+                        <a href="{{route('dashboard')}}" class="btn btn-primary-custom btn-md"> Go Dashbord</a>
+                    @else
+                        <a href="{{ route('librarian.login') }}" class="btn btn-primary-custom btn-md">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>
+                            Librarian Login
+                        </a>
+                    @endif
+
                     <a href="#" class="btn btn-outline-light btn-md rounded-pill px-5 d-flex justify-content-center align-items-center">
                         <i class="bi bi-play-circle me-2"></i> Watch Demo
                     </a>
@@ -91,10 +101,10 @@
             <div class="col-md-5 text-end position-relative">
                 <!-- Main Illustration -->
                 <div class="glass-card p-5 float-animation d-inline-block">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2874/2874802.png"
+                    <img src="{{asset('assets/img/library.png')}}"
                          alt="Library Illustration"
-                         class="img-fluid"
-                         style="max-height: 400px;">
+                         class="img-fluid rounded"
+                         style="max-height: 450px;">
                 </div>
 
                 <!-- Floating Stats -->
@@ -105,7 +115,7 @@
                     </div>
                 </div>
 
-                <div class="position-absolute bottom-0 end-0 translate-middle">
+                <div class="position-absolute top-100 end-0 translate-middle">
                     <div class="stat-card float-animation bg-success bg-opacity-80" style="animation-delay: 2s;">
                         <h3 class="mb-0 fw-bold">99%</h3>
                         <small>On-Time Return</small>

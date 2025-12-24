@@ -122,6 +122,26 @@ class BookController extends Controller
             }
         }
 
+        // 3️⃣ Calculate borrowed books
+        // borrowed = total copy - available copy
+        $borrowed = $book->copy - $book->available_copy;
+
+        // ❌ Rule: new copy cannot be less than borrowed
+        if ($request->copy < $borrowed) {
+            return back()->withErrors([
+                'copy' => 'Total copy cannot be less than borrowed books'
+            ]);
+        }
+
+        // 4️⃣ Calculate new available copy
+        $newAvailableCopy = $request->copy - $borrowed;
+
+        // safety (extra protection)
+        if ($newAvailableCopy < 0) {
+            $newAvailableCopy = 0;
+        }
+
+
 
         // update database
         DB::table('books')->where('id', $id)->update([
@@ -130,7 +150,7 @@ class BookController extends Controller
             'cover'             => $fileName,
             'isbn'              => $request ->isbn,
             'copy'              => $request ->copy,
-            'available_copy'    => $request ->copy,
+            'available_copy'    => $newAvailableCopy,
             'updated_at'        => now(),
         ]);
 

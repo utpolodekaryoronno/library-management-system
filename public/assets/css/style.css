@@ -4253,7 +4253,10 @@ table.table-inbox tbody tr.checked {
     background: #f8f9fa;
     color: #4c5fcf;
 }
-
+.btn-primary-custom:focus{
+    color: #5a6fd8 !important;
+    background: #f8f9fa;
+}
 .float-animation {
     animation: float 6s ease-in-out infinite;
 }
