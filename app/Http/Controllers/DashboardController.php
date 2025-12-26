@@ -10,9 +10,8 @@ class DashboardController extends Controller
     public function index(){
         $totalStudents = DB::table('students')->count();
         $totalBooks = DB::table('books')->count();
-        $totalBorrowPending = DB::table('borrows')
-        ->where('status', 'pending')
-        ->count();
-        return view('pages.dashboard', compact('totalStudents', 'totalBooks', 'totalBorrowPending'));
+        $totalBorrowPending = DB::table('borrows')->where('status', 'pending')->count();
+        $totalReservationPending = DB::table('reservations')->where('status', 'pending')->count();
+        return view('pages.dashboard', compact('totalStudents', 'totalBooks', 'totalBorrowPending', 'totalReservationPending'));
     }
 }

@@ -61,6 +61,10 @@ class BorrowController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "book_id" => "required",
+            "return_date" => "required",
+        ]);
         // return $request->all();
 
         DB::table('borrows')->insert([

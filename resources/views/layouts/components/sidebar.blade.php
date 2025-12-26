@@ -43,8 +43,8 @@
                 <li class="{{ Route::is('borrows.index') ? 'active' : '' }}">
                     <a href="{{ route('borrows.index') }}"><i class="fe fe-vector"></i> <span>Borrowing</span></a>
                 </li>
-                <li class="{{ Route::is('reservations.index') ? 'active' : '' }}">
-                    <a href="{{ route('reservations.index') }}"> <i class="fe fe-document"></i> <span>Reservation</span></a>
+                <li class="{{ Route::is('reservation.index') ? 'active' : '' }}">
+                    <a href="{{ route('reservation.index') }}"> <i class="fe fe-document"></i> <span>Reservation</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>

@@ -25,18 +25,20 @@
                     @include("layouts.components.message")
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Book Reservations Form</h4>
+                            <p><strong>Student:</strong> {{ $reservation->student_name }}</p>
+                            <p><strong>Book:</strong> {{ $reservation->book_title }}</p>
 
-                            {{-- @if($book->available_copy > 0)
-                                <button class="btn btn-success">Borrow Book</button>
-                            @else
-                                <form action="{{ route('reservation.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="student_id" value="{{ $student->id }}">
-                                    <input type="hidden" name="book_id" value="{{ $book->id }}">
-                                    <button class="btn btn-warning">Reserve Book</button>
-                                </form>
-                            @endif --}}
+                            <form action="{{ route('reservation.approve', $reservation->id) }}" method="POST">
+                                @csrf
+
+                                <div class="form-group">
+                                    <label>Return Date</label>
+                                    <input type="date" name="return_date" class="form-control">
+                                </div>
+
+                                <button class="btn btn-success">Approve & Borrow</button>
+                                <a href="{{ route('reservation.index') }}" class="btn btn-secondary">Cancel</a>
+                            </form>
 
                         </div>
                     </div>

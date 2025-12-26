@@ -32,7 +32,14 @@ Route::middleware('auth.librarian.check')->group(function () {
     Route::get('book-returned/{id}', [BorrowController::class, 'bookReturned'])->name('book.returned');
     Route::get('overdue-borrows', [BorrowController::class, 'overdueBorrow'])->name('overdue.borrows');
 
-    Route::resource('reservations', ReservationController::class);
+    Route::resource('reservation', ReservationController::class);
+    // Route::post('/reservation/approve/{id}', [ReservationController::class, 'approve'])->name('reservation.approve');
+    Route::get('/reservation/{id}/approve', [ReservationController::class, 'approveForm'])
+    ->name('reservation.approve.form');
+    Route::post('/reservation/{id}/approve', [ReservationController::class, 'approve'])
+        ->name('reservation.approve');
+
+    Route::post('/reservation/cancel/{id}', [ReservationController::class, 'cancel'])->name('reservation.cancel');
 
     Route::post('/librarian/logout', [LibrarianAuthController::class, 'logout'])->name('logout.librarian');
 

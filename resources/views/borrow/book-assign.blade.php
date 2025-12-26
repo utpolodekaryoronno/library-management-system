@@ -48,7 +48,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="book">Select Book</label>
-                                    <select class="form-control" id='book' name="book_id">
+                                    {{-- <select class="form-control" id='book' name="book_id">
                                         @foreach($books as $book)
                                              @if ($book->available_copy > 0)
                                                 <option value="{{ $book->id }}">
@@ -56,14 +56,38 @@
                                                 </option>
                                             @endif
                                         @endforeach
+                                    </select> --}}
+
+                                    <select class="form-control" id="book" name="book_id">
+                                        @foreach($books as $book)
+                                            <option
+                                                value="{{ $book->id }}"
+                                                data-available="{{ $book->available_copy }}"
+                                            >
+                                                {{ $book->title }} ({{ $book->author }})
+                                                @if($book->available_copy == 0)
+                                                    — Not Available
+                                                @endif
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="returnDate">Return Date</label>
-                                    <input type="date" class="form-control" id="returnDate" name="return_date" required>
+                                    <input type="date" class="form-control" id="returnDate" name="return_date" >
                                     <input type="hidden"  name="student_id" value="{{ $student->id }}">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Create a Borrow</button>
+                                <button type="submit" class="btn btn-primary"  id="borrowBtn">Create a Borrow</button>
+                            </form>
+
+                            {{-- reservation --}}
+                            <form action="{{ route('reservation.store') }}" method="POST" id="reserveForm" style="display:none;">
+                                @csrf
+                                <input type="hidden" name="student_id" value="{{ $student->id }}">
+                                <input type="hidden" name="book_id" id="reserve_book_id">
+                                <button type="submit" class="btn btn-warning mt-2">
+                                    Reserve Book
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -71,4 +95,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+    const bookSelect = document.getElementById('book');
+    const borrowBtn = document.getElementById('borrowBtn');
+    const reserveForm = document.getElementById('reserveForm');
+    const reserveBookId = document.getElementById('reserve_book_id');
+
+    function toggleButtons() {
+        const selectedOption = bookSelect.options[bookSelect.selectedIndex];
+        const available = selectedOption.getAttribute('data-available');
+        const bookId = selectedOption.value;
+
+        if (available > 0) {
+            borrowBtn.style.display = 'inline-block';
+            reserveForm.style.display = 'none';
+        } else {
+            borrowBtn.style.display = 'none';
+            reserveForm.style.display = 'block';
+            reserveBookId.value = bookId;
+        }
+    }
+
+    bookSelect.addEventListener('change', toggleButtons);
+    window.onload = toggleButtons;
+</script>
+
 @endsection
