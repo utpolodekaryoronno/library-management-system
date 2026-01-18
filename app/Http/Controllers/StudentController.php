@@ -87,7 +87,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-         $student = DB::table('students')->where('id', $id)->first();
+        $student = DB::table('students')->where('id', $id)->first();
         return view('student.edit', compact('student'));
     }
 
